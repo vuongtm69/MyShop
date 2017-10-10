@@ -12,10 +12,12 @@ namespace Vau.Model.Models
    public class PostTag
     {
         [Key]
+        [Column(Order = 1)]
         public int PostID { set; get; }
 
         [Key]
         [MaxLength(50)]
+        [Column(Order = 2, TypeName = "varchar")]
         public String TagID { set; get; }
 
         [ForeignKey("PostID")]

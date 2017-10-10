@@ -32,7 +32,6 @@ namespace Vau.Model.Models
         [MaxLength(250)]
         public string Email { set; get; }
 
-        [MaxLength(250)]
         public bool Status { set; get; }
     }
 }

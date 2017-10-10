@@ -8,10 +8,12 @@ namespace Vau.Model.Models
     public class ProductTag
     {
         [Key]
+        [Column(Order = 1)]
         public int ProductID { set; get; }
 
         [Key]
         [MaxLength(50)]
+        [Column(Order = 2, TypeName = "varchar")]
         public String TagID { set; get; }
 
         [ForeignKey("ProductID")]
