@@ -1,18 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vau.Data.Infrastructure;
 using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IPostRepository: IRepository<Post>
-    { }
-   public class PostRepository: RepositoryBase<Post>, IPostRepository
+    public interface IPostRepository : IRepository<Post>
     {
-        public PostRepository(IDbFactory dbFactory):base(dbFactory)
+        IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int totalRow);
+    }
+
+    public class PostRepository : RepositoryBase<Post>, IPostRepository
+    {
+        public PostRepository(IDbFactory dbFactory) : base(dbFactory)
         { }
+
+        public IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int totalRow)
+        {
+            var query = from p in DbContext.Posts
+                        join pt in DbContext.PostTags
+                        on p.ID equals pt.PostID
+                        where pt.TagID == tag && p.Status
+                        orderby p.ID
+                        select p;
+            totalRow = query.Count();
+
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return query;
+        }
     }
 }
