@@ -8,7 +8,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IFooterRepository
+    public interface IFooterRepository : IRepository<Footer>
     {
 
     }

@@ -8,7 +8,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IMenuFactory
+    public interface IMenuFactory: IRepository<Menu>
     {
 
     }

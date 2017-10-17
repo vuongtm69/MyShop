@@ -8,7 +8,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IPageRepository
+    public interface IPageRepository : IRepository<Page>
     { }
    public class PageRepository: RepositoryBase<Page>, IPageRepository
     {

@@ -5,7 +5,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IProductCategoryRepository
+    public interface IProductCategoryRepository : IRepository<ProductCategory>
     {
         IEnumerable<ProductCategory> GetByAlias(string Alias);
     }

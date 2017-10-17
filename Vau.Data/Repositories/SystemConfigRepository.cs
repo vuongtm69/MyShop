@@ -8,7 +8,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface ISystemConfigRepository
+    public interface ISystemConfigRepository : IRepository<SystemConfig>
     { }
    public class SystemConfigRepository: RepositoryBase<SystemConfig>, ISystemConfigRepository
     {

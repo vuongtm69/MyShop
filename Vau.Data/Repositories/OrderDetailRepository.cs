@@ -8,7 +8,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data.Repositories
 {
-    public interface IOrderDetailRepository
+    public interface IOrderDetailRepository : IRepository<OrderDetail>
     { }
    public class OrderDetailRepository: RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
