@@ -11,9 +11,9 @@ namespace Vau.Services
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postcategory);
+        PostCategory Add(PostCategory postcategory);
         void Update(PostCategory postcategory);
-        void Delete(int id);
+        PostCategory Delete(int id);
 
         void SaveChange();
 
@@ -35,14 +35,14 @@ namespace Vau.Services
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postcategory)
+        public PostCategory Add(PostCategory postcategory)
         {
-            _postCategoryRepository.Add(postcategory);
+           return _postCategoryRepository.Add(postcategory);
         }
 
-        public void Delete(int id)
+        public PostCategory Delete(int id)
         {
-            _postCategoryRepository.Delete(id);
+           return _postCategoryRepository.Delete(id);
         }
 
         public IEnumerable<PostCategory> GetAll()
