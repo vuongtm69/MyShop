@@ -29,8 +29,8 @@ namespace Vau.UnitTest.RepostitoryTest
         public void PostCategory_Repository_Create()
         {
             PostCategory category = new PostCategory();
-            category.Name = "Test category";
-            category.Alias = "Test category";
+            category.Name = "Test category1";
+            category.Alias = "Test category1";
             category.Status = true;
 
             var result = objRepository.Add(category);

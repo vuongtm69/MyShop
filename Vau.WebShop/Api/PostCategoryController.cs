@@ -14,7 +14,7 @@ namespace Vau.WebShop.Api
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
-        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService): base(errorService)
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) : base(errorService)
         {
             this._postCategoryService = postCategoryService;
         }
@@ -22,26 +22,21 @@ namespace Vau.WebShop.Api
         [Route("getall")]
         public HttpResponseMessage GET(HttpRequestMessage request)
         {
-            return CreateHttpResponse(request, () => {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
+            return CreateHttpResponse(request, () =>
+            {
+                var listCategory = _postCategoryService.GetAll();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+
                 return response;
             });
         }
 
         public HttpResponseMessage POST(HttpRequestMessage request, PostCategory postCategory)
         {
-            return CreateHttpResponse(request, ()=> {
-                HttpResponseMessage response= null;
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
                     response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
@@ -59,7 +54,8 @@ namespace Vau.WebShop.Api
 
         public HttpResponseMessage PUT(HttpRequestMessage request, PostCategory postCategory)
         {
-            return CreateHttpResponse(request, () => {
+            return CreateHttpResponse(request, () =>
+            {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
@@ -78,7 +74,8 @@ namespace Vau.WebShop.Api
 
         public HttpResponseMessage DELETE(HttpRequestMessage request, int id)
         {
-            return CreateHttpResponse(request, () => {
+            return CreateHttpResponse(request, () =>
+            {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
