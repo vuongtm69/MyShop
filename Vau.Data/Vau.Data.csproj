@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201710220853099_AddErrorTable.Designer.cs">
       <DependentUpon>201710220853099_AddErrorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710230328328_fixtagmodel.cs" />
+    <Compile Include="Migrations\201710230328328_fixtagmodel.Designer.cs">
+      <DependentUpon>201710230328328_fixtagmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710220853099_AddErrorTable.resx">
       <DependentUpon>201710220853099_AddErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710230328328_fixtagmodel.resx">
+      <DependentUpon>201710230328328_fixtagmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

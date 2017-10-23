@@ -19,5 +19,6 @@ namespace Vau.Model.Models
         public string Type { set; get; }
 
         public virtual IEnumerable<ProductTag> ProductTags { set; get; }
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
