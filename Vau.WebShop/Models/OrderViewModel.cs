@@ -15,7 +15,6 @@ namespace Vau.WebShop.Models
 
         public string CustomerEmail { set; get; }
 
-
         public string CustomerMobile { set; get; }
 
         public string CustomerMessage { set; get; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using Vau.Model.Models;
 
 namespace Vau.Data
 {
-   public class VauShopDbContext: DbContext
+   public class VauShopDbContext:  IdentityDbContext<ApplicationUser>
     {
         public VauShopDbContext() : base("VauShopConnection")
         {
@@ -34,6 +35,10 @@ namespace Vau.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static VauShopDbContext Create()
+        {
+            return new VauShopDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

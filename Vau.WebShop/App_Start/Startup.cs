@@ -12,17 +12,22 @@ using Vau.Services;
 using System.Web.Mvc;
 using System.Web.Http;
 using Vau.Data;
+using Vau.Model.Models;
+using System.Web;
+using Microsoft.Owin.Security.DataProtection;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(Vau.WebShop.App_Start.Startup))]
 
 namespace Vau.WebShop.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
 
             ConfigAutofac(app);
+            ConfigureAuth(app);
         }
 
         private void ConfigAutofac(IAppBuilder app)
@@ -36,6 +41,13 @@ namespace Vau.WebShop.App_Start
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             builder.RegisterType<VauShopDbContext>().AsSelf().InstancePerRequest();
+
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
